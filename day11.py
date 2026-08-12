@@ -10,5 +10,4 @@ import json
 with open("analysis.json", "r") as f:
     data = json.load(f)
     print("最高分" + data["汇总"]["最高"] + "（" +  str(data["汇总"]["最高分"]) + "分）")
-
-    
+# 今日已学 Git 第一次存档
