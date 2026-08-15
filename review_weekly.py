@@ -39,8 +39,3 @@ print("平均分最高的门店：" + max_average_name + "(" + str(max_average) 
 report = {"平均分":average_group,"分类":classic}
 with open("report.json", "w") as f:
     json.dump(report,f)
-    
-    
-
-
-
