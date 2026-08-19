@@ -24,4 +24,4 @@ else:
     print("作者 ID：",args.user )
     print("总待办数量：", str(count))
     print("已完成待办数量：", str(done))
-    print("完成率：",float(rate),"%")
+    print("完成率：",rate,"%")
