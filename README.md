@@ -14,10 +14,31 @@
 
 | 项目 | 说明 |
 |---|---|
+| `alert_push.py` | 数据异常监控：抓文章 → 筛超长标题 → 推送告警（首个可下载作品） |
 | `competitor_report.py` | 竞品数据分级 → 双报告输出 |
 | `day10_final.py` | 嵌套字典 → JSON 导出 + 极值分析 |
 | `day11_final.py` | 客户拜访满意度分析器 |
 | `review_weekly.py` | 综合：函数 + 字典 + 擂台法 + 分类 + JSON |
+
+## 首个完整作品：alert_push.py
+
+数据异常监控小工具——抓取文章列表，找出标题超过 `--limit` 字的异常文章，统计数量并自动推送一条告警。
+
+**怎么装**（只需一次）：
+
+```bash
+pip install -r requirements.txt
+```
+
+**怎么跑**：
+
+```bash
+# 默认阈值 70 字
+python alert_push.py
+
+# 自定义阈值，比如标题超过 75 字才算异常
+python alert_push.py --limit 75
+```
 
 ## 学习日志
 
