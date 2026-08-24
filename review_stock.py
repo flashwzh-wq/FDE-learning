@@ -1,6 +1,7 @@
 import sqlite3
 from datetime import date
 
+#建一个知识库
 conn = sqlite3.connect("stock.db")
 c = conn.cursor()
 

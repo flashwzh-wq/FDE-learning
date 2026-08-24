@@ -14,8 +14,6 @@ code1 = """import requests
 resp = requests.get("网址")
 data = resp.json()"""
 
-
-
 c.execute("INSERT INTO templates(title , keywords , code) VALUES(? , ? , ?)" , 
 ("requests请求 " , "下载网络内容" , code1))
 conn.commit()
