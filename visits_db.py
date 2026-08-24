@@ -5,7 +5,7 @@ conn =sqlite3.connect("visits.db")
 c = conn.cursor()
 
 #1.先建表，如果表有了就不管了
-c.execute("""CREATE TABLE IF NOT EXISTS visits(id INTEGER PRIMARY KEY,customer TEXT, date TEXT , note TEXT)""")
+c.execute("""CREATE TABLE IF NOT EXISTS visits(id INTEGER PRIMARY KEY,customer TEXT, date TEXT , note text) """)
 
 #2.算好日子
 today = str(date.today())
