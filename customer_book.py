@@ -3,10 +3,10 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--add",type=str, help="请填写新增客户名称")
-parser.add_argument("——industry",type=str, help="请填写新增客户行业")
-parser.add_argument("——list", action="store_true", help="列出所有客户")
-parser.add_argument("——delete",type=str, help="请填写需要删掉的客户名称")
-parser.add_argument("——stats",action="store_true", help="统计每个行业的客户数量")
+parser.add_argument("--industry",type=str, help="请填写新增客户行业")
+parser.add_argument("--list", action="store_true", help="列出所有客户")
+parser.add_argument("--delete",type=str, help="请填写需要删掉的客户名称")
+parser.add_argument("--stats",action="store_true", help="统计每个行业的客户数量")
 args = parser.parse_args()
 
 conn = sqlite3.connect("customer.db")
