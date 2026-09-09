@@ -18,7 +18,7 @@
 | W6 | CLI 工具 argparse | 竞品数据处理命令行工具 | 完成 |
 | W7 | API 调用 requests | 企业微信数据异常自动推送 | 完成 |
 | W8 | SQLite 数据库 | 代码字典、客户台账 | 完成 |
-| W9 | Web 框架 FastAPI | 竞品监控 Web Dashboard | 计划中 |
+| W9 | Web 框架 FastAPI | 代码字典 Web API（查询 + 新增 + 删除 + 更新） | 完成 |
 | W10-11 | RAG 应用 | 企业知识库问答 Web Demo | 进行中（核心链路已跑通） |
 | W12-13 | Agent + Streamlit | 会议纪要自动生成工具 | 计划中 |
 | W14 | 云部署 Docker | 应用容器化上腾讯云 | 计划中 |
