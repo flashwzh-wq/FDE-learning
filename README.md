@@ -6,7 +6,7 @@
 
 - **身份**：腾讯在职，企业微信品牌经理出身，正在转型技术售前
 - **学习方向**：云技术售前 / FDE 方案（技术 × 行业场景）
-- **方式**：零基础自学 Python，工作日每天 1 小时，已连续推进 4 周
+- **方式**：零基础自学 Python，工作日每天 1 小时，已连续推进 5 周
 - **方法论**：每学一个模块，产出一个能跑、能写进简历的作品——不注水、不赶工
 
 ## 学习路线（12 周 · 8 条简历行）
@@ -19,7 +19,7 @@
 | W7 | API 调用 requests | 企业微信数据异常自动推送 | 完成 |
 | W8 | SQLite 数据库 | 代码字典、客户台账 | 完成 |
 | W9 | Web 框架 FastAPI | 竞品监控 Web Dashboard | 计划中 |
-| W10-11 | RAG 应用 | 企业文档智能问答 Demo | 计划中 |
+| W10-11 | RAG 应用 | 企业知识库问答 Web Demo | 进行中（核心链路已跑通） |
 | W12-13 | Agent + Streamlit | 会议纪要自动生成工具 | 计划中 |
 | W14 | 云部署 Docker | 应用容器化上腾讯云 | 计划中 |
 | W15-16 | 简历 + 面试 | 简历重写 + 模拟面试 | 计划中 |
@@ -45,6 +45,21 @@ python code_dict.py --add 新模板 --addcode "..."   # 手动新增模板
 python customer_book.py --stats                  # 按行业统计，如 {'餐饮': 2, '零售': 1}
 ```
 
+### 企业知识库问答（`app.py` + `资料.txt`）· W10
+
+用 Python + Streamlit + Ollama 搭建的本地企业知识库问答 Demo。资料维护在独立的 `资料.txt`：程序读取资料后，用 `bge-m3` 完成向量检索，再由 `qwen2.5:3b` 根据命中资料生成回答。
+
+- 支持语义检索、回答生成和命中资料展示；
+- 支持空问题提示，知识库无相关资料时明确说不知道；
+- 新增资料只需编辑 `资料.txt`，无需修改 Python 代码；
+- 当前内置 6 条企业微信操作资料。
+
+```bash
+streamlit run app.py
+```
+
+浏览器打开 `http://localhost:8501` 后即可提问。
+
 ### 数据异常监控（`alert_push.py`）· W7
 
 调用企业微信 API，抓取文章列表、筛出超长标题、自动推送告警。
@@ -55,9 +70,21 @@ python customer_book.py --stats                  # 按行业统计，如 {'餐�
 
 ## 怎么跑
 
+基础依赖：
+
 ```bash
 pip install -r requirements.txt
 ```
+
+运行企业知识库问答 Demo 前，还需要安装并启动 Ollama，并下载两个本地模型：
+
+```bash
+ollama pull bge-m3
+ollama pull qwen2.5:3b
+streamlit run app.py
+```
+
+然后在浏览器打开 `http://localhost:8501`。运行期间需要保持 Streamlit 和 Ollama 服务可用。
 
 ## 认证与下一步
 
