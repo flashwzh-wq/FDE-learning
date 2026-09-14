@@ -1,5 +1,7 @@
 import streamlit as st
 import requests
+import json
+import os
 
 st.title("企业知识库问答")
 
@@ -16,12 +18,29 @@ def 建向量库(片段们):
         库[片段] = 真转向量(片段)
     return 库
 
+def 保存向量库(库):
+    with open ("向量库.json","w",encoding="utf-8") as 文件:
+        json.dump(库, 文件, ensure_ascii = False) 
+
+def 读取向量库():
+    with open("向量库.json", "r",encoding="utf-8") as 文件:
+        return json.load(文件)
+
 with open("资料.txt",encoding="utf-8" ) as 文件:
     资料片段们 = 文件.readlines()
 资料片段们 = [资料.strip() for 资料 in 资料片段们]
 
+if os.path.exists("向量库.json"):
+    旧库 = 读取向量库()
+    if set(资料片段们) == set(旧库.keys()):
+        库 = 旧库
+    else:
+        库 = 建向量库(资料片段们)
+        保存向量库(库)
+else:
+    库 = 建向量库(资料片段们)
+    保存向量库(库)
 
-库 = 建向量库(资料片段们)
 st.caption(f"当前知识库共收录 {len(资料片段们)} 条资料")
 
 
