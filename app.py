@@ -26,6 +26,11 @@ def 读取向量库():
     with open("向量库.json", "r",encoding="utf-8") as 文件:
         return json.load(文件)
 
+def 重建并保存(片段们):
+    库 = 建向量库(片段们)
+    保存向量库(库)
+    return 库
+
 with open("资料.txt",encoding="utf-8" ) as 文件:
     资料片段们 = 文件.readlines()
 资料片段们 = [资料.strip() for 资料 in 资料片段们]
@@ -35,11 +40,9 @@ if os.path.exists("向量库.json"):
     if set(资料片段们) == set(旧库.keys()):
         库 = 旧库
     else:
-        库 = 建向量库(资料片段们)
-        保存向量库(库)
+        库 = 重建并保存(资料片段们)
 else:
-    库 = 建向量库(资料片段们)
-    保存向量库(库)
+    库 = 重建并保存(资料片段们)
 
 st.caption(f"当前知识库共收录 {len(资料片段们)} 条资料")
 
